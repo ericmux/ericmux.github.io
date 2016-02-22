@@ -1,14 +1,31 @@
 
+var tracks = ['q009073.mp3', 
+	'q009074.mp3',
+	'q009075.mp3',
+	'q009076.mp3',
+	'q009077.mp3',
+	'q009078.mp3',
+	'q009079.mp3',
+	'q009080.mp3',
+];
+
 function playSFX(sfx){
 	new Audio(sfx.currentSrc).play();
 }
 
 
 $(function() {
-	  var bgMusic = new Audio('jorah_the_andal.ogg');
 	  var effect = new Audio('sfx.wav');
-
-	  bgMusic.loop = true;
+	  
+	  var bgMusic = new Audio(tracks[0]);
+	  var i = 0;
+	  bgMusic.addEventListener('ended',function(){
+	  		i++;
+	        bgMusic.src = tracks[i % tracks.length];
+	        bgMusic.pause();
+	        bgMusic.load();
+	        bgMusic.play();
+	    });
 	  bgMusic.play();
 
 	  var type = 'webgl';
