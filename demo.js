@@ -1,4 +1,16 @@
+
+function playSFX(sfx){
+	new Audio(sfx.currentSrc).play();
+}
+
+
 $(function() {
+	  var bgMusic = new Audio('jorah_the_andal.ogg');
+	  var effect = new Audio('sfx.wav');
+
+	  bgMusic.loop = true;
+	  bgMusic.play();
+
 	  var type = 'webgl';
 	  var two = new Two({
 	    type: Two.Types[type],
@@ -65,6 +77,6 @@ $(function() {
 	    text.velocity.r = Math.random() * Math.PI / 8;
 
 	    characters.push(text);
-
+	    playSFX(effect);
 	  }
 });
